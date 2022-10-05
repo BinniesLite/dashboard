@@ -1,2 +1,19 @@
-@import url('https://cdn.syncfusion.com/ej2/material.css');
+:root {
+    --main-bg-white: #fafbfb;
+    --main-bg-dark: #20232a,
+}
 
+.main-bg-white { 
+    background-color: var(--main-bg-white);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(216, 216, 216);
+    border-radius: 40px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
