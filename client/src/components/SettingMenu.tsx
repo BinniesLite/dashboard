@@ -10,15 +10,8 @@ const SettingMenu = () => {
 
     const handleActiveSetting = () => {
         if (setActiveSetting) {
-            if (activeMenu === false) setActiveSetting(false)
-            else {
-                setActiveMenu && setActiveMenu(false);   
-            }
+            setActiveSetting(prev => !prev)
         }
-    }
-
-    const handleActiveTheme = () => {
-
     }
 
     return (

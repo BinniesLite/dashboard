@@ -1,5 +1,5 @@
 import './App.css'
-import { Navbar, Setting, Sidebar, SettingMenu } from './components';
+import { Navbar, Setting, Sidebar, SettingMenu } from './components'; 
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,14 +7,14 @@ import {
 } from 'react-router-dom';
 import { useTheme } from './contexts/theme-context';
 
-import {Form} from './pages'
+import { Form } from './pages'
 
 // Why is this mostly used for routing purpose
 function App() {
   const { activeMenu, currentMode, activeSetting, setActiveSetting, activeTheme } = useTheme();
-
+  
   return (
-    <div className={currentMode === 'Dark' ? 'dark' : 'bg-main-bg'} >
+    <div className={currentMode === 'Dark' ? 'dark' : 'bg-main-bg'}>
       <Router>
         {activeMenu ? (
           <div className='w-72 fixed dark:bg-secondary-dark-bg bg-white sidebar' >
@@ -41,6 +41,7 @@ function App() {
           {activeSetting && <SettingMenu/>}
           <Routes>
             <Route path="/" element={ <Form/> } />
+            <Route path="/form" element={ <Form/> } />
           </Routes>
         </div>
       </Router>

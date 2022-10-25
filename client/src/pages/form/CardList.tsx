@@ -1,13 +1,13 @@
-import React from "react";
+import React, {memo} from "react";
 
 import { Stack } from "@mui/material";
 
 import CardDetails from "./CardDetails";
 
-import { CrawlData } from "../../../types";
+import { CrawlData, DemoCrawlData } from "../../../types";
 
 interface Props {
-  datas: CrawlData[]
+  datas: DemoCrawlData[]
 }
 
 const CardList = ({ datas }: Props) => {
@@ -27,4 +27,4 @@ const CardList = ({ datas }: Props) => {
   );
 };
 
-export default CardList;
+export default memo(CardList);

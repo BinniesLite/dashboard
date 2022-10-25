@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useTheme } from '../contexts/theme-context'
 import { Link } from 'react-router-dom';
 import { links } from '../data/links';
@@ -10,7 +10,7 @@ const Sidebar = () => {
   const handleCloseSidebar = () => {
     setActiveMenu && setActiveMenu(prev => !prev )
   }
-  // Omg, I just found something that is very dumb
+
   return (
     <div className='h-screen'>
       {activeMenu && (
@@ -21,20 +21,23 @@ const Sidebar = () => {
             <button onClick={handleCloseSidebar}><CloseButton/></button>
           </div>
           {/* Links */}
-          <div className=' mt-10'>
+          <div className='mt-10'>
             {links?.map((item, i) => (
               <div key={i}>
                 <p className='text-md text-gray-500 '>
                   {item.title.toUpperCase()}
                 </p>
                 {item?.links?.map((link, index) => (
-                  <button 
-                    style={activeTab === link.name ? {backgroundColor: activeTheme, color: 'white'} :  {}}
-                    onClick={() => setActiveTab && setActiveTab(link.name)}
-                    className={`text-md flex flex-row cursor-pointer rounded w-full items-center p-2 my-5 gap-3`}>
-                    {link.icon}
-                    <p className='capitalize'>{link.name}</p>
-                  </button>
+                  <Link to={`/${link.name}`}>
+                    <button
+                      key={index}
+                      style={activeTab === link.name ? {backgroundColor: activeTheme, color: 'white'} :  {}}
+                      onClick={() => setActiveTab && setActiveTab(link.name)}
+                      className={`text-md flex flex-row cursor-pointer rounded w-full items-center p-2 my-5 gap-3`}>
+                      {link.icon}
+                      <p className='capitalize'>{link.name}</p>
+                    </button>
+                  </Link>
                 ))}
               </div>
             ))}

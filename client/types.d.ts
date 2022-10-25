@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export interface Links {
     title: string,
     links: [{
@@ -8,11 +7,23 @@ export interface Links {
         icon: React.ReactNode
     }]
 }
-interface Selector {
-    key: string, value: string
+interface Attributes {
+    name: string, value: string
 }
 
 export interface CrawlData {
     url: string,
-    selector: Selector[]
+    Attributes: Attributes[]
+}
+
+export interface DemoCrawlData {    
+    name?: string,
+    description?: string,
+    attributes?: Attributes[],
+    createdAt?: {
+        $date: string
+    }
+    _id?: {
+        $oid: string
+    }
 }
