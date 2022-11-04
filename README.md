@@ -1,2 +1,3 @@
 # dashboard
-A Dashboard UI, free to to use and re-distributed
+
+Demo React application for FE and Django for Backend
