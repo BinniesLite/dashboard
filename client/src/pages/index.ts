@@ -1,4 +1,4 @@
 export {default as Ecommerce} from './ecommerce';
 
-export {default as Form} from './form/form'; 
-export {default as EditForm} from './form/edit'; 
+export {default as Form} from './admin/form/form'; 
+export {default as EditForm} from './admin/form/edit'; 

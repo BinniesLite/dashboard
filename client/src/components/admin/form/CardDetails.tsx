@@ -2,8 +2,8 @@ import { Card, CardContent, Typography, Stack, Divider, CardActions, Button } fr
 import { Link } from "react-router-dom";
 import { BsFillTrashFill } from 'react-icons/bs';
 import { AiFillEdit } from 'react-icons/ai';
-import { useMenu } from "../../contexts/crawl-data-context";
-import { deleteCrawlData, baseUrl } from "../../utils/http-request";
+import { useMenu } from "../../../contexts/crawl-data-context";
+import { deleteCrawlData, baseUrl } from "../../../utils/http-request";
 
 interface Props {
   data: any

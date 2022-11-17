@@ -1,19 +1,19 @@
 import React, { useState, MouseEvent, useCallback, useEffect } from "react";
 import { Button } from "@mui/material";
 import { AiOutlinePlusSquare } from "react-icons/ai";
-import { LayoutPage, Header } from "../../layout";
-import FormModal from "../../components/form/FormModal";
-import CardList from "../../components/form/CardList";
-import PaginationCustom from "../../components/form/PaginationCustom";
+import { LayoutPage, Header } from "../../../layout";
+import FormModal from "../../../components/admin/form/FormModal";
+import CardList from "../../../components/admin/form/CardList";
+import PaginationCustom from "../../../components/admin/form/PaginationCustom";
 // Context
-import { useMenu } from "../../contexts/crawl-data-context";
-import { useTheme } from "../../contexts/theme-context";
+import { useMenu } from "../../../contexts/crawl-data-context";
+import { useTheme } from "../../../contexts/theme-context";
 // Types
-import { DemoCrawlData } from "../../../types";
+import { DemoCrawlData } from "../../../../types";
 // API
-import {baseUrl, fetchAPI, updateCrawlData} from '../../utils/http-request';
+import {baseUrl, fetchAPI, updateCrawlData} from '../../../utils/http-request';
 // Utils 
-import { calculatePage, PAGESIZE } from "../../utils/page-count";
+import { calculatePage, PAGESIZE } from "../../../utils/page-count";
 
 // Deal with form
 const Form = () => {

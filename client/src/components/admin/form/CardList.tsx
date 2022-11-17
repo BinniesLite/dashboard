@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 
 import CardDetails from "./CardDetails";
 
-import { DemoCrawlData } from "../../../types";
+import { DemoCrawlData } from "../../../../types";
 
 interface Props {
   datas: DemoCrawlData[]

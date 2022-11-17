@@ -2,7 +2,7 @@ import React from "react";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 
 import { AiFillCloseCircle } from "react-icons/ai";
-import CloseButton from '../ui/CloseButton';
+import CloseButton from '../../ui/CloseButton';
 import {
   Dialog,
   DialogTitle,

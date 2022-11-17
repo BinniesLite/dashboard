@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { LayoutPage, Header } from '../../layout';
-import { baseUrl, getCrawlData } from '../../utils/http-request';
+import { LayoutPage, Header } from '../../../layout';
+import { baseUrl, getCrawlData } from '../../../utils/http-request';
 import { useParams } from 'react-router-dom';
 import { TextField, Stack, Button } from '@mui/material';
-import { DemoCrawlData } from '../../../types';
+import { DemoCrawlData } from '../../../../types';
 
 const EditForm = () => {
     const [crawlData, setCrawlData] = useState<DemoCrawlData>({});
