@@ -1,4 +1,5 @@
 import React from 'react'
+import { Breadcrumbs, Link as BreadcrumbsItem } from '@mui/material'
 
 interface Props {
   title: string,
@@ -7,12 +8,16 @@ interface Props {
 
 const Header = ({title, category}: Props) => {
   return (
-    <div>
-        <div className='text-[#a9a7b1] capitalize text-xl'>
-            {category}
-        </div>
+    <div className='flex justify-between w-full'>
+        
         <div className='font-bold capitalize text-3xl'>
             {title}
+        </div>
+        <div className='text-[#a9a7b1] capitalize text-xl'>
+            <Breadcrumbs className='cursor-pointer'>
+              <div> Main </div>
+              <div> Form </div>
+            </Breadcrumbs>
         </div>
     </div>
   )

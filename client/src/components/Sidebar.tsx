@@ -2,7 +2,7 @@ import React from 'react'
 import { useTheme } from '../contexts/theme-context'
 import { Link } from 'react-router-dom';
 import { links } from '../data/links';
-import CloseButton from './UI/CloseButton';
+import CloseButton from './ui/CloseButton';
 
 const Sidebar = () => {
   const { activeMenu, activeTheme, activeTab, setActiveTab, setActiveMenu } = useTheme();

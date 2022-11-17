@@ -8,7 +8,7 @@ export interface Links {
     }]
 }
 interface Attributes {
-    name: string, value: string
+    key: string, value: string
 }
 
 export interface CrawlData {
@@ -18,12 +18,9 @@ export interface CrawlData {
 
 export interface DemoCrawlData {    
     name?: string,
+    url?: string,
     description?: string,
     attributes?: Attributes[],
-    createdAt?: {
-        $date: string
-    }
-    _id?: {
-        $oid: string
-    }
+    created_at?: string,
+    id?: number
 }

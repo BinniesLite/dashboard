@@ -1,21 +1,24 @@
 import React, { useState, MouseEvent, useCallback, useEffect } from "react";
-
 import { Button } from "@mui/material";
 import { AiOutlinePlusSquare } from "react-icons/ai";
 import { LayoutPage, Header } from "../../layout";
-import FormModal from "./FormModal";
-import CardList from "./CardList";
+import FormModal from "../../components/form/FormModal";
+import CardList from "../../components/form/CardList";
+import PaginationCustom from "../../components/form/PaginationCustom";
 // Context
-import { useMenu } from "../../contexts/crawlData-context";
+import { useMenu } from "../../contexts/crawl-data-context";
 import { useTheme } from "../../contexts/theme-context";
 // Types
 import { DemoCrawlData } from "../../../types";
-
-import {baseUrl, fetchAPI} from '../../utils/fetchAPI';
+// API
+import {baseUrl, fetchAPI, updateCrawlData} from '../../utils/http-request';
+// Utils 
+import { calculatePage, PAGESIZE } from "../../utils/page-count";
 
 // Deal with form
 const Form = () => {
   const [activeDialog, setActiveDialog] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
   const {crawlDatas, setCrawlDatas} = useMenu();
   const {activeTheme} = useTheme();
 
@@ -23,24 +26,33 @@ const Form = () => {
     setActiveDialog((prev) => !prev);
   }, []);
 
+  // Change upon page change
   useEffect(() => {
     const fetchData = async () => {
-      const responseData = await fetchAPI(baseUrl);
-      setCrawlDatas(responseData);
+      const responseData = await fetchAPI(`${baseUrl}/list/`);
+      setCrawlDatas(responseData?.results);
     }
   
     fetchData();
-  }, [])
-  
+  }, [page])
 
-  const handleSubmitData = (data: DemoCrawlData, e: MouseEvent ) => {
+  // Pagination total pages 
+  const total_pages: number = crawlDatas && calculatePage(crawlDatas.length, PAGESIZE);
+  console.log(total_pages);
+  const handleSubmitData: (data: DemoCrawlData, e: MouseEvent) => void = (data, e) => {
     e.preventDefault();
-    // Add created_at field into 
-    console.log(data)
-    setCrawlDatas && setCrawlDatas(prev => [...prev, data]); 
-
+    // Update on client 
+    setCrawlDatas && setCrawlDatas(prev => [...prev, (data)]); 
+    // Update data on server
+    updateCrawlData(baseUrl, data)
+    // Close Modal
     handleActiveDialog();    
   };
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+    console.log(page);
+  }
 
   return (
     <LayoutPage>
@@ -48,10 +60,10 @@ const Form = () => {
       <Button
         sx={{ marginTop: 3, color: activeTheme, borderColor: activeTheme }}
         variant="outlined"
-        onClick={handleActiveDialog}
-      >
+        onClick={handleActiveDialog} >
         <AiOutlinePlusSquare />
       </Button>
+
       <FormModal
         color={activeTheme}  
         activeDialog={activeDialog}
@@ -60,6 +72,11 @@ const Form = () => {
       />
 
       <CardList datas={crawlDatas} />
+      <PaginationCustom 
+        page={page} 
+        handlePageChange={handlePageChange} 
+        count={total_pages} 
+      />
     </LayoutPage>
   );
 };

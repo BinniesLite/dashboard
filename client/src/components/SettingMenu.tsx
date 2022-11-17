@@ -2,11 +2,11 @@ import React from 'react'
 import { Divider } from '@mui/material'
 import { MdTransitEnterexit } from 'react-icons/md';
 import { useTheme } from '../contexts/theme-context';
-import Color from './UI/Color';
-import CloseButton from './UI/CloseButton';
+import Color from './ui/Color';
+import CloseButton from './ui/CloseButton';
 
 const SettingMenu = () => {
-    const { setActiveSetting, activeMenu, setActiveMenu, activeTheme, setActiveTheme } = useTheme();
+    const { setActiveSetting, activeSetting, activeTheme, setActiveTheme } = useTheme();
 
     const handleActiveSetting = () => {
         if (setActiveSetting) {
@@ -14,11 +14,12 @@ const SettingMenu = () => {
         }
     }
 
+    if (activeSetting)
     return (
-        <div className='bg-half-transparent h-full w-full fixed nav-item top-0 right-0'>
-            <div className='float-right w-400 bg-white min-h-full '>
+    <div className='bg-half-transparent z-2 h-full w-full fixed nav-item top-0 right-0'>
+            <div className='float-right w-400 bg-white min-h-full'>
                 <div className='mt-5 mx-5 grid grid-cols-1 gap-10'>
-                    <div className='flex place-content-between   text-xl font-bold'>
+                    <div className='flex place-content-between text-xl font-bold'>
                         <p className='font-semibold text-lg'>Setting</p>
                         <button
                             onClick={handleActiveSetting}
@@ -46,6 +47,10 @@ const SettingMenu = () => {
 
         </div>
     )
+    else {
+        return <>
+        </>
+    }
 }
 
 export default SettingMenu
