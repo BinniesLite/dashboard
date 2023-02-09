@@ -9,10 +9,11 @@ interface Props {
     handlePageChange: (e: React.ChangeEvent<unknown>, value: number) => void
 }
 
-const PaginationCustom = ({count, hideNextButton, hidePreviousButton, page, handlePageChange}: Props) => {
+const PaginationCustom = ({count, page, handlePageChange}: Props) => {
   return (
-    <Stack sx={{my: '2rem'}} spacing={2}>
+    <Stack sx={{my: '2rem'}} justifyContent="center" alignItems="center" spacing={2}>
         <Pagination 
+            size="small"
             count={count} 
             page={page}
             onChange={handlePageChange}/>

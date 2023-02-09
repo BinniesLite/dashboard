@@ -9,7 +9,6 @@ interface Props {
 const Header = ({title, category}: Props) => {
   return (
     <div className='flex justify-between w-full'>
-        
         <div className='font-bold capitalize text-3xl'>
             {title}
         </div>

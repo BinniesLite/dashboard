@@ -4,7 +4,7 @@ interface AppContextProviderProps {
     children: React.ReactNode
 }
 
-interface AppContextInterface {
+export interface AppContextInterface {
     activeTheme?: string,
     setActiveTheme?: React.Dispatch<React.SetStateAction<string>>,
     activeSetting?: boolean,

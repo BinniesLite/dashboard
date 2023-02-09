@@ -3,7 +3,7 @@ export const theme = [
         color: '#fb9678', 
         name: 'beige-orange'
     },
-    {
+{
         color: '#B6E388', 
         name: 'greenwitch'
     },

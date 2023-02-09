@@ -12,15 +12,16 @@ interface Attributes {
 }
 
 export interface CrawlData {
-    url: string,
-    Attributes: Attributes[]
-}
-
+    data: DemoCrawlData[],
+    lastPage?: number,
+    page?: number, 
+    total?: number
+}   
 export interface DemoCrawlData {    
     name?: string,
     url?: string,
     description?: string,
     attributes?: Attributes[],
-    created_at?: string,
+    createdAt?: string,
     id?: number
 }

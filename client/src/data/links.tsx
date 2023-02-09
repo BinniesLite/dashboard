@@ -6,7 +6,7 @@ export const links = [
       title: "dashboard",
       links: [
         {
-          name: "ecommerce",
+          name: "main",
           icon: <BsFillInboxesFill />,
         },
       ],
@@ -20,4 +20,4 @@ export const links = [
         },
       ],
     },
-  ];
+];

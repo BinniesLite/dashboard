@@ -1,14 +1,17 @@
-import React from 'react'
 import { Divider } from '@mui/material'
-import { MdTransitEnterexit } from 'react-icons/md';
 import { useTheme } from '../contexts/theme-context';
 import Color from './ui/Color';
 import CloseButton from './ui/CloseButton';
 
-const SettingMenu = () => {
-    const { setActiveSetting, activeSetting, activeTheme, setActiveTheme } = useTheme();
+interface Props {
+    activeSetting: boolean | undefined,
+    setActiveSetting: React.Dispatch<React.SetStateAction<boolean>> | undefined,
+    activeTheme: string| undefined,
+    setActiveTheme: React.Dispatch<React.SetStateAction<string>> | undefined
+}
 
-    const handleActiveSetting = () => {
+const SettingMenu = ({activeSetting, setActiveSetting, activeTheme, setActiveTheme} : Props) => {
+    function handleActiveSetting(): void {
         if (setActiveSetting) {
             setActiveSetting(prev => !prev)
         }
@@ -44,7 +47,6 @@ const SettingMenu = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
     else {

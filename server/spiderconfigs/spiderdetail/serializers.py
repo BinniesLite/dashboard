@@ -16,10 +16,9 @@ class ConfigSerializer(serializers.ModelSerializer):
         fields = "__all__"
         
     def create(self, validated_data):
-        print("Hello World")
         attributes_data = validated_data.pop('attributes')
         config = Config.objects.create(**validated_data)
-    
+
         for i in attributes_data:
             Attribute.objects.create(config=config, **i)
         
@@ -35,22 +34,24 @@ class ConfigSerializer(serializers.ModelSerializer):
             print(e)
         
         instance.save()
-            
+        
         attributes = validated_data.get('attributes', None)
-
+        
         if attributes:
             for attr in attributes:
-                attr_id = attr.get('id')
-                
-                print(attr_id)
+                attr_id = attr.get('id', None)
+                print(attr_id)  
                 if attr_id:
-                    attr_item = Attribute.objects.get(id=attr_id)
+                    attr_item = Attribute.objects.get(pk=attr_id)
+                    
+                    print(attr_item)
                     attr_item.key = attr.get('key', attr.key)
                     attr_item.value = attr.get('value', attr.value)
-                    
+
                     attr_item.save()
                 else:
-                    Attribute.objects.create(config=instance, **attr)
+                    pass 
+                    # Attribute.objects.create(config=instance, **attr)
             
         return instance
         

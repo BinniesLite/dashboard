@@ -12,7 +12,7 @@ const Color = ({activeTheme, setActiveTheme}: Props) => {
     return (
         <div>
             {theme?.map((item, i) => (
-                <Tooltip title={item.name}>
+                <Tooltip key={i} title={item.name}>
                     <button
                         key={i}
                         style={{color: item.color}}

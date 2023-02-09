@@ -1,8 +1,8 @@
-import React from "react";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
-
 import { AiFillCloseCircle } from "react-icons/ai";
+
 import CloseButton from '../../ui/CloseButton';
+
 import {
   Dialog,
   DialogTitle,
@@ -24,7 +24,10 @@ interface Props {
 const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }: Props) => {
   // handle form with react-hook-form
   const { register, handleSubmit, control, formState: { errors } } = useForm({
-    criteriaMode: 'all'
+    criteriaMode: 'all',
+    defaultValues: {
+      attributes: [{ key: '', value: '' }]
+    }
   });
 
 
@@ -32,6 +35,7 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
     control,
     name: "attributes",
   });
+
 
 
   return (
@@ -63,7 +67,6 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
               <TextField
                 error={Object.keys(errors).length === 0 ? false : true}
                 size="small"
-
                 label="website url"
                 {...register('name',
                   {
@@ -72,7 +75,7 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
                       value: /^(ftp|http|https):\/\/[^ "]+$/,
                       message: 'Please input a valid url'
                     }
-                  }
+                  } 
                 )} />
             )}
           />
@@ -99,8 +102,7 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
             )}
           />
 
-
-          <Controller
+          {/* <Controller
             control={control}
             name="description"
             defaultValue={``}
@@ -121,11 +123,10 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
                 )} />
             )}
 
-          />
+          /> */}
           {fields.map((item, index) => (
-            <Stack flexDirection="row" gap={3} justifyContent="space-between">
+            <Stack key={item.id} flexDirection="row" gap={3} justifyContent="space-between">
               <Controller
-                key={item.id}
                 control={control}
                 defaultValue={``}
                 name={`attributes[${index}].key`}
@@ -140,9 +141,8 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
                 )}
               />
               <Controller
-                key={item.id}
                 control={control}
-                defaultValue={``}
+  
                 name={`attributes[${index}].value`}
                 render={(field) => (
                   <TextField
@@ -169,7 +169,6 @@ const FormModal = ({ activeDialog, handleActiveDialog, handleSubmitData, color }
             <Button type="submit">Save</Button>
           </Stack>
         </Stack>
-
       </DialogContent>
     </Dialog>
   );

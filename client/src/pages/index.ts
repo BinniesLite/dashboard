@@ -1,4 +1,4 @@
-export {default as Ecommerce} from './ecommerce';
-
-export {default as Form} from './admin/form/form'; 
-export {default as EditForm} from './admin/form/edit'; 
+export {default as Main} from './admin/main'; 
+export {default as LoginPage} from './login/login';
+export {default as ErrorPage} from './error'
+export {default as RegisterPage} from './login/register';

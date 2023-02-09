@@ -1,21 +1,27 @@
 import { AiFillSetting } from 'react-icons/ai';
 import { Tooltip } from '@mui/material';
-import { useTheme } from '../contexts/theme-context';
 
-const Setting = () => {
-  const {activeTheme} = useTheme(); 
 
+interface Props {
+  setActiveSetting: React.Dispatch<React.SetStateAction<boolean>> | undefined; 
+  activeTheme: string | undefined
+}
+
+const Setting = ({ setActiveSetting, activeTheme }: Props) => {
   return (
-    <Tooltip title="Settings">
-      <button
-        style={{background: activeTheme}}
-        type="button"
-        className={`hover:drop-shadow-xl cursor-pointer ease-in duration-100 rounded-full text-3xl text-white p-3`}
-      >
-        <AiFillSetting />
+    <div className={`bg-[${activeTheme}] rounded-full fixed bottom-9 right-8`}>
+      <button onClick={() => setActiveSetting && setActiveSetting(prev => !prev)}>
+        <Tooltip title="Settings">
+          <div
+            style={{ background: activeTheme }}
+            className={`hover:drop-shadow-xl cursor-pointer ease-in duration-100 rounded-full text-3xl text-white p-3`}
+          >
+            <AiFillSetting />
+          </div>
+        </Tooltip>
       </button>
+    </div>
 
-    </Tooltip>
   )
 }
 

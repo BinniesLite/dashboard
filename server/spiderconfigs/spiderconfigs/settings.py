@@ -40,16 +40,14 @@ INSTALLED_APPS = [
     
     # Local
     'spiderdetail',
+    'account',
     
     # Third Party
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'knox'
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 12
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +131,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': {
+        'knox.auth.TokenAuthentication' # Allow both session based and token based authentication
+    }
+} 
+
