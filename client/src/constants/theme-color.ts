@@ -1,9 +1,11 @@
-export const theme = [
+import { ITheme } from "./types"
+
+export const theme: ITheme[] = [
     {
         color: '#fb9678', 
         name: 'beige-orange'
     },
-{
+    {
         color: '#B6E388', 
         name: 'greenwitch'
     },

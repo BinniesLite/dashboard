@@ -1,21 +1,20 @@
 import React, { useState, useContext, createContext } from "react";
-import { DemoCrawlData } from "../../types";
+import { DemoCrawlData } from "../../../types";
 
 interface Props {
     children: React.ReactNode
 }
 
-interface MenuContextInterface {
+interface IMenuContextInterface {
     crawlDatas: DemoCrawlData[],
     setCrawlDatas: React.Dispatch<React.SetStateAction<DemoCrawlData[]>>,
     RemoveCrawlData: (id: number) => void
 }
 
-const MenuContext = createContext({} as MenuContextInterface);
+const MenuContext = createContext({} as IMenuContextInterface);
 
 const MenuProvider = ({ children }: Props ) => {
   const [crawlDatas, setCrawlDatas] = useState<DemoCrawlData[]>([] as DemoCrawlData[]);    
-
 
   // Remove item with that id
   const RemoveCrawlData = (id: number) => {
@@ -23,7 +22,7 @@ const MenuProvider = ({ children }: Props ) => {
     setCrawlDatas(newCrawlData);
   }
 
-  const data: MenuContextInterface = {
+  const data: IMenuContextInterface = {
     crawlDatas,
     setCrawlDatas,
     RemoveCrawlData

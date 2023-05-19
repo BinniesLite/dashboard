@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography, Stack, Divider, CardActions, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { useMenu } from "../../../contexts/crawl-data-context";
+import { useMenu } from "../../../contexts/crawl-context/crawl-data-context";
 import { deleteCrawlData, baseUrl } from "../../../lib/http-request";
 
 interface Props {
@@ -9,7 +9,6 @@ interface Props {
   FaSpider: any,
   BsFillTrashFill: any,
   AiFillEdit: any
-
 }
 
 const getDate: (date: string) => Date = (date: string) => {
@@ -55,7 +54,7 @@ const CardDetails = ({ data, FaSpider, BsFillTrashFill, AiFillEdit }: Props) => 
           <Button >
             <AiFillEdit />
           </Button>
-        </Link>
+        </Link> 
 
       </CardActions>
     </Card>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { links } from '../data/links';
+import { links } from '../constants/links';
 import CloseButton from './ui/CloseButton';
 // Types
 import { AppContextInterface } from '../contexts/theme-context';

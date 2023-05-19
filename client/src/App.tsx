@@ -23,7 +23,6 @@ function App() {
       <Router>
       <Suspense fallback={<div>...Loading</div>}>
           <Routes>
-            
               <Route path="/"  element={<LoginPage />} />
               <Route path="/admin/*"  element={<Main />} />
               <Route path="/login"  element={<LoginPage />} />

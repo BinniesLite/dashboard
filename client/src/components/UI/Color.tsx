@@ -1,5 +1,5 @@
 
-import {theme} from '../../data/theme-color';
+import {theme} from '../../constants/theme-color';
 import { AiFillCheckCircle, AiTwotoneCheckCircle } from 'react-icons/ai';
 import { Tooltip } from '@mui/material';
 

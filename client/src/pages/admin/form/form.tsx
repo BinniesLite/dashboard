@@ -8,7 +8,7 @@ const FormModal = lazy(() => import("../../../components/admin/form/FormModal"))
 import CardList from "../../../components/admin/form/CardList";
 import PaginationCustom from "../../../components/admin/form/PaginationCustom";
 // Context
-import { useMenu } from "../../../contexts/crawl-data-context";
+import { useMenu } from "../../../contexts/crawl-context/crawl-data-context";
 import { useTheme } from "../../../contexts/theme-context";
 // Types
 import { DemoCrawlData } from "../../../../types";
@@ -33,8 +33,9 @@ const FormPage = () => {
     const fetchData = async () => {
       setIsLoading(true);
       
+      
       const responseData = await getAllCrawlData(`${baseUrl}/list/`);
-      console.log(responseData);
+      
       setIsLoading(false);
       
       setCrawlDatas(responseData);

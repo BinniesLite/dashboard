@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 // Styling
 import { Divider, Stack, Button, TextField, Typography } from '@mui/material';
 // Firebase
-import { GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useNavigate } from 'react-router-dom';
 // React hookform
@@ -33,14 +32,8 @@ const fields: string[] = ['firstName', 'lastName', 'email', 'username', 'passwor
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      navigate("/admin/form")
-    }
-  })
-
   // Form Control
-  const {register, control, handleSubmit} = useForm()
+  const {control, handleSubmit} = useForm()
   
   const submitForm = (data: any) => { 
     console.log(data)

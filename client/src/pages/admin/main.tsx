@@ -35,7 +35,6 @@ const Main = () => {
             setActiveTab={setActiveTab}
             activeTheme={activeTheme} />
         </Suspense>
-
       }
 
       <div className={
@@ -43,13 +42,12 @@ const Main = () => {
           ? 'md:flex-2 ml-72 min-h-screen bg-main-bg dark:bg-main-dark-bg'
           : 'w-full flex-2 min-h-screen'}>
         <Navbar setActiveMenu={setActiveMenu} activeTheme={activeTheme} />
-        {activeSetting && 
+        {/* {activeSetting && 
           <Suspense fallback={<div>...Loading</div>}>
             <SettingMenu activeTheme={activeTheme} setActiveTheme={setActiveTheme} activeSetting={activeSetting} setActiveSetting={setActiveSetting} />
           </Suspense>
-        }
-        <Setting activeTheme={activeTheme} setActiveSetting={setActiveSetting} />
-
+        } */}
+        {/* <Setting activeTheme={activeTheme} setActiveSetting={setActiveSetting} /> */}
         <Routes>
           <Route path="/form" element={<FormPage />} />
           <Route path="/form/:id" element={<EditFormPage />} />

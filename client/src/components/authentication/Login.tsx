@@ -37,11 +37,7 @@ const buttonStyle = {
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      navigate("/admin/form")
-    }
-  })
+
 
   const handleLoginWithGoogle = () => {
     signInWithRedirect(auth, new GoogleAuthProvider);
@@ -56,11 +52,16 @@ const LoginPage = () => {
   
 
   const submitForm = async (data:any) => {
-    const response = await login(data['username'], data['password'], `${baseUrl}/login/`)
+    const response = await login(data['username'], data['password'], `${baseUrl}/login/`); 
+    
     
     if (response) {
-      navigate("/admin/form")
-    }
+      localStorage.setItem('token', response.token)
+      console.log(localStorage.getItem('token'))
+      
+      navigate("/admin/form") 
+    }  
+    
   } 
   
   return (
